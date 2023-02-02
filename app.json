@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "bulaApp",
+    "slug": "bulaApp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#045159"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/0f7aaede-bb4c-4055-ac8f-46338f9c63a5"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.BulaBoy.BulaBoy"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#045159"
+      },
+      "package": "com.BulaBoy.BulaBoy"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0f7aaede-bb4c-4055-ac8f-46338f9c63a5"
+      }
+    },
+    "runtimeVersion": "1.0.0"
+  }
+}
