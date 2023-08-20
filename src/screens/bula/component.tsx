@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ActivityIndicator, Linking, Platform, View } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import Pdf from 'react-native-pdf';

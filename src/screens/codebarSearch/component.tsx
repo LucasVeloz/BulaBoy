@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BarCodeEvent, BarCodeScanner } from 'expo-barcode-scanner';
 import { Header } from '../../components';
 import { renderTextByHash } from '../../utils';

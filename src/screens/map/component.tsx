@@ -1,5 +1,5 @@
+import { useEffect, useState } from 'react';
 import { getLastKnownPositionAsync, LocationObjectCoords, useForegroundPermissions } from 'expo-location';
-import React, { useEffect, useState } from 'react';
 import MapView from 'react-native-maps';
 import { Header } from '../../components';
 import { renderTextByHash } from '../../utils';

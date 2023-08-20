@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FlatList, Keyboard } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import debounce from 'lodash.debounce';

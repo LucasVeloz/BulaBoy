@@ -1,5 +1,4 @@
 import { MaterialIcons } from '@expo/vector-icons';
-import React from 'react';
 
 import { Container, InvisibleBlock, Text } from './styles';
 import { IBlock } from './types';
