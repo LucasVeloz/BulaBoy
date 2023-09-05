@@ -1,53 +1,54 @@
-import { useEffect, useState } from 'react';
 import { FlatList, Keyboard } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import debounce from 'lodash.debounce';
+import Animated, { SlideInLeft, SlideOutRight } from 'react-native-reanimated';
 
 import { Header, Input, Item } from '../../components';
 
+import { useSearch } from './hook';
+
 import { renderTextByHash } from '../../utils';
 
-import { MedicineApi } from '../../services';
-
-import { Container, Content } from './styles';
+import * as S from './styles';
+import { FlashList } from '@shopify/flash-list';
 
 
 export const TextSearch = () => {
   const { navigate } = useNavigation();
 
-  const [input, setInput] = useState('');
-  const [medicines, setMedicines] = useState();
-
-  useEffect(() => {
-    const debounced = debounce(async () => {
-      if (!input) return;
-      const { content } = await MedicineApi.search(input);
-      setMedicines(content)
-    }, 1000)
-    debounced();
-}, [input])
+  const { data, input, setInput } = useSearch();
 
   return (
-    <Container onPress={Keyboard.dismiss}>
+    <S.Container onPress={Keyboard.dismiss}>
       <Header title={renderTextByHash('search-by-text')} />
-      <Content>
+      <S.InputContainer>
         <Input
           placeholder='Pesquise seu medicamento'
           value={input}
           onChangeText={setInput}
         />
-        <FlatList
-          data={medicines}
-          keyExtractor={item => item.idBulaPacienteProtegido}
-          style={{ paddingVertical: 32 }}
-          showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => (
-            <Item name={item.nomeProduto} maker={item.razaoSocial} onPress={() => {
+      </S.InputContainer>
+      <FlashList
+        data={data}
+        keyExtractor={item => item.idBulaPacienteProtegido}
+        contentContainerStyle={{ paddingVertical: 32, paddingHorizontal: 20 }}
+        showsVerticalScrollIndicator={false}
+        estimatedItemSize={100}
+        renderItem={({ item, index }) => (
+          <Animated.View
+            entering={SlideInLeft.delay(index * 100)}
+            exiting={SlideOutRight.delay(index * 100)}
+            style={{ marginBottom: 20 }}
+          >
+          <Item
+            name={item.nomeProduto}
+            maker={item.razaoSocial}
+            onPress={() => {
               navigate('bula', { id: item.idBulaProfissionalProtegido })
-            }} />
-          )}
-        />
-      </Content>
-    </Container>
+            }}
+          />
+          </Animated.View>
+        )}
+      />
+    </S.Container>
   )
 }
