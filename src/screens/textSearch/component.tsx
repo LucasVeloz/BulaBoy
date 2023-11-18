@@ -1,15 +1,17 @@
 import { FlatList, Keyboard } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Animated, { SlideInLeft, SlideOutRight } from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 
-import { Header, Input, Item } from '../../components';
+import { GoBack, Input, Card } from '../../components';
 
 import { useSearch } from './hook';
 
 import { renderTextByHash } from '../../utils';
 
 import * as S from './styles';
-import { FlashList } from '@shopify/flash-list';
+
+
+const AnimatedView = Animated.createAnimatedComponent(S.InputContainer)
 
 
 export const TextSearch = () => {
@@ -19,34 +21,29 @@ export const TextSearch = () => {
 
   return (
     <S.Container onPress={Keyboard.dismiss}>
-      <Header title={renderTextByHash('search-by-text')} />
-      <S.InputContainer>
-        <Input
-          placeholder='Pesquise seu medicamento'
-          value={input}
-          onChangeText={setInput}
-        />
-      </S.InputContainer>
-      <FlashList
+      <S.HeaderContainer>
+        <GoBack />
+        <AnimatedView sharedTransitionTag='input'>
+          <Input
+            placeholder={renderTextByHash('search-your-medicine')}
+            value={input}
+            onChangeText={setInput}
+          />
+        </AnimatedView>
+      </S.HeaderContainer>
+      <FlatList
         data={data}
-        keyExtractor={item => item.idBulaPacienteProtegido}
-        contentContainerStyle={{ paddingVertical: 32, paddingHorizontal: 20 }}
-        showsVerticalScrollIndicator={false}
-        estimatedItemSize={100}
+        keyExtractor={item => item.idBulaPacienteProtegido + item.nomeProduto}
+        contentContainerStyle={{ paddingVertical: 32, paddingHorizontal: 20, rowGap: 20 }}
         renderItem={({ item, index }) => (
-          <Animated.View
-            entering={SlideInLeft.delay(index * 100)}
-            exiting={SlideOutRight.delay(index * 100)}
-            style={{ marginBottom: 20 }}
-          >
-          <Item
+          <Card
             name={item.nomeProduto}
             maker={item.razaoSocial}
+            index={index}
             onPress={() => {
               navigate('bula', { id: item.idBulaProfissionalProtegido })
             }}
           />
-          </Animated.View>
         )}
       />
     </S.Container>

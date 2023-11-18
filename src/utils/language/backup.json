@@ -1,22 +1,18 @@
 {
   "greeting-title": {
-    "pt-br": "Muito legal te ver por aqui!",
-    "en-us": "Nice to see you here!"
+    "pt-br": "Bem vindo \nao Bula Boy",
+    "en-us": "Welcome \nTo Bula Boy"
   },
-  "greeting-text": {
-    "pt-br": "Você pode ter mais informações sobre os medicamentos escolhendo uma opção abaixo",
-    "en-us": "You can have more information about the medicines by choosing an option below"
+  "search-your-medicine": {
+    "pt-br": "Pesquise seu medicamento",
+    "en-us": "Search your medicine"
   },
-  "search-by-text": {
-    "pt-br": "Pesquisar por texto",
-    "en-us": "Search by text"
+  "types-of-search": {
+    "pt-br": "Tipos de pesquisa",
+    "en-us": "Types of search"
   },
-  "search-by-barcode": {
-    "pt-br": "Pesquisar por código de barras",
-    "en-us": "Search by barcode"
-  },
-  "search-by-map": {
-    "pt-br": "Pesquisar por mapa",
-    "en-us": "Search by map"
+  "my-medicines": {
+    "pt-br": "Meus medicamentos",
+    "en-us": "My medicines"
   }
 }

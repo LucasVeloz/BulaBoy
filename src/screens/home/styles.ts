@@ -3,26 +3,31 @@ import { dynamicFontSize } from '../../utils';
 
 export const Container = styled.View`
   flex: 1;
-  padding: 20px;
   background: ${({ theme }) => theme.colors.white};
+  padding: 64px 20px 0;
 `;
 
 export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${dynamicFontSize(24)}px;
   color: ${({ theme }) => theme.colors.black};
-  margin-top: 32px;
-  margin-bottom: 44px;
+  margin-bottom: 38px;
 `;
 
-
-export const Subititle = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.regular};
-  font-size: ${dynamicFontSize(16)}px;
+export const SectionText = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.medium};
+  font-size: ${dynamicFontSize(20)}px;
   color: ${({ theme }) => theme.colors.black};
-`
+  margin: 48px 0 32px;
+`;
 
-export const ContentBlock = styled.View`
-  margin-top: 80px;
+export const HeroSection = styled.View`
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+`;
+
+export const Separator = styled.View`
+  width: 100%;
+  height: 12px;
 `;

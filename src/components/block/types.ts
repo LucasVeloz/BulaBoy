@@ -1,7 +1,6 @@
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export interface IBlock {
-  title: string;
-  icon: keyof typeof MaterialIcons.glyphMap;
+  icon: keyof typeof MaterialCommunityIcons.glyphMap;
   onPress: () => void;
 }

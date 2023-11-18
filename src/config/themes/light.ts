@@ -1,4 +1,6 @@
-export const light = {
+import { Theme } from "./types";
+
+export const light: Theme = {
   colors: {
     black: '#202126',
     primary: '#045159',
@@ -10,6 +12,6 @@ export const light = {
     regular: 'Poppins_Regular',
     medium: 'Poppins_Medium',
     semiBold: 'Poppins_SemiBold',
-    bold: 'Poppins_Bold'
+    bold: 'Poppins_Bold',
   }
 }

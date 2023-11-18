@@ -1,4 +1,4 @@
-import { PixelRatio, Platform } from "react-native";
+import { PixelRatio } from "react-native";
 
 export const dynamicFontSize = (size: number) => {
   const newSize = size * PixelRatio.getFontScale();

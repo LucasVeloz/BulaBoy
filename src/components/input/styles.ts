@@ -11,5 +11,6 @@ export const Container = styled.View`
 
 export const TextInput = styled.TextInput`
   flex: 1;
-  font-family: ${({ theme }) => theme.fonts.regular}
+  font-family: ${({ theme }) => theme.fonts.regular};
+  margin-left: 20px;
 `;

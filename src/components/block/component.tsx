@@ -1,14 +1,15 @@
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import { Container, InvisibleBlock, Text } from './styles';
+import { Container } from './styles';
 import { IBlock } from './types';
+import { useTheme } from 'styled-components/native';
 
-export const Block = ({ title, icon, onPress }: IBlock) => {
+export const Block = ({ icon, onPress }: IBlock) => {
+  const theme = useTheme();
+
   return (
     <Container onPress={onPress}>
-      <MaterialIcons name={icon} size={22} />
-      <Text>{title}</Text>
-      <InvisibleBlock />
+      <MaterialCommunityIcons name={icon} size={32} color={theme.colors.primary} />
     </Container>
   )
 }

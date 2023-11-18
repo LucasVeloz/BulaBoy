@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import { dynamicFontSize } from '../../utils';
+import { TextStyle } from 'react-native';
 
 export const Container = styled.TouchableOpacity`
   width: 100%;
@@ -20,3 +21,8 @@ export const Subtitle = styled.Text`
   font-size: ${dynamicFontSize(16)}px;
   color: ${({ theme }) => theme.colors.white};
 `
+
+
+export const pillStyle: TextStyle = {
+  alignSelf: 'flex-end',
+}

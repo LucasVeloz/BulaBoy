@@ -34,6 +34,9 @@
         "projectId": "0f7aaede-bb4c-4055-ac8f-46338f9c63a5"
       }
     },
-    "runtimeVersion": "1.0.0"
+    "runtimeVersion": "1.0.0",
+    "plugins": [
+      "expo-localization"
+    ]
   }
 }
