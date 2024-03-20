@@ -1,9 +1,6 @@
 export type NavigationList = {
   home: undefined;
-  textSearch: {
-    search?: string;
-    offline?: boolean;
-  };
+  textSearch: undefined;
   barcodeSearch: undefined;
   bula: {
     id: string;

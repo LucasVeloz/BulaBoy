@@ -9,8 +9,8 @@ export const SEARCH_TYPES: SearchType[] = [
     navigation: 'barcodeSearch',
     icon: 'barcode-scan',
   },
-  {
-    navigation: 'textSearch',
-    icon: 'tray-arrow-down',
-  },
+  // {
+  //   navigation: 'textSearch',
+  //   icon: 'tray-arrow-down',
+  // },
 ]

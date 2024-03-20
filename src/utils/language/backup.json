@@ -14,5 +14,17 @@
   "my-medicines": {
     "pt-br": "Meus medicamentos",
     "en-us": "My medicines"
+  },
+  "add-medicine": {
+    "pt-br": "Adicionar medicamento",
+    "en-us": "Add medicine"
+  },
+  "medicine-name": {
+    "pt-br": "Nome do medicamento",
+    "en-us": "Medicine name"
+  },
+  "medicine-exists": {
+    "pt-br": "Medicamento já existe",
+    "en-us": "Medicine already exists"
   }
 }

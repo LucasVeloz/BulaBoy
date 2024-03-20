@@ -23,11 +23,18 @@ export const SectionText = styled.Text`
 
 export const HeroSection = styled.View`
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 `;
 
+
+
 export const Separator = styled.View`
   width: 100%;
-  height: 12px;
+  margin-bottom: 12px;
+`;
+
+export const CreateMedContainer = styled.Pressable`
+  padding: 20px;
+  flex: 1;
 `;

@@ -1,23 +1,33 @@
-import { TextInputProps } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useTheme } from 'styled-components/native';
 
-import { Container, TextInput } from './styles';
+import { InputProps } from './types';
+
+import * as S from './styles';
 
 
-export const Input = ({ ...rest }: TextInputProps) => {
+
+export const Input = ({ useKeyboardTextInput, ...rest }: InputProps) => {
   const theme = useTheme();
+
   return (
-    <Container>
+    <S.Container>
       <MaterialIcons
         name='search'
         color={theme.colors.primary}
         size={20}
       />
-      <TextInput
+      {useKeyboardTextInput ? (
+        <S.KeyboardTextInput
+          placeholderTextColor={theme.colors.black}
+          {...rest}
+        />
+      ) : (
+        <S.TextInput
         placeholderTextColor={theme.colors.black}
         {...rest}
-      />
-    </Container>
+        />
+        )}
+    </S.Container>
   )
 }

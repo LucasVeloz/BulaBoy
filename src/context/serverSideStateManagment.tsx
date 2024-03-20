@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
-import { MMKV } from "react-native-mmkv";
 import { QueryClient } from "@tanstack/react-query";
 import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 
-const storage = new MMKV();
+import { storage } from "../services";
+
 
 const clientStorage = {
   setItem: (key: string, value: string) => {

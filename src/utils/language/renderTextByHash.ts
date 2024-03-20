@@ -8,6 +8,5 @@ export const renderTextByHash =  (hash: AvaiablesHash) => {
   if (languageTag === 'pt-BR'){
     return backup[hash]['pt-br']
   }
-  return backup[hash]['pt-br']
   return backup[hash]['en-us']
 }

@@ -4,5 +4,5 @@ import { NavigationList } from '../../routes'
 
 export type SearchType = {
   icon: keyof typeof MaterialCommunityIcons.glyphMap;
-  navigation: keyof NavigationList
+  navigation:  keyof Omit<NavigationList, 'bula' | 'myMeds'>
 }

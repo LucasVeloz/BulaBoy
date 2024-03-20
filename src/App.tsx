@@ -5,6 +5,7 @@ import { Poppins_400Regular, Poppins_500Medium, Poppins_600SemiBold, Poppins_700
 import { MainRoutes } from './routes';
 import { themeFactory } from './config';
 import { ServerSideStateManagment } from './context';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 
 const theme = themeFactory('light');
@@ -20,10 +21,12 @@ export default function App() {
   if (!isLoaded) return null;
 
   return (
-    <ServerSideStateManagment>
-      <ThemeProvider theme={theme}>
-        <MainRoutes />
-      </ThemeProvider>
-    </ServerSideStateManagment>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ServerSideStateManagment>
+        <ThemeProvider theme={theme}>
+          <MainRoutes />
+        </ThemeProvider>
+      </ServerSideStateManagment>
+    </GestureHandlerRootView>
   )
 }
