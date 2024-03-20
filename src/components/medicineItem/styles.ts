@@ -34,7 +34,7 @@ export const MedicineName = styled(Animated.Text)`
     font-size: ${dynamicFontSize(16)}px;
     font-family: ${theme.fonts.medium};
     color: ${theme.colors.primary};
-    max-width: 65%;
+    max-width: 150px;
   `};
 `;
 
