@@ -4,6 +4,8 @@ export type NavigationList = {
   barcodeSearch: undefined;
   bula: {
     id: string;
+    name: string;
+    producer: string;
   }
   myMeds: {
     id: string;

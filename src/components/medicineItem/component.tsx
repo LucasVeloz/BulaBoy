@@ -13,7 +13,7 @@ export const MedicineItem = ({ name, schedule, id }: Props) => {
         <S.Circle>
           <S.Icon name='pill' />
         </S.Circle>
-        <S.MedicineName sharedTransitionTag={`${id}-${name}`}>{name}</S.MedicineName>
+        <S.MedicineName sharedTransitionTag={`${id}-${name}`} numberOfLines={1}>{name}</S.MedicineName>
       </S.Block>
       <S.Schedule>{schedule}</S.Schedule>
       <S.Arrow name='chevron-right' />

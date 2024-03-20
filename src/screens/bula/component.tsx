@@ -5,30 +5,34 @@ import Pdf from 'react-native-pdf';
 
 
 
-import { GoBack } from '../../components';
+import { AddButton, GoBack } from '../../components';
 
-import { useBula } from '../../hooks';
+import { useBula, useMed } from '../../hooks';
 
 import * as S from './styles';
+import { NavigationList } from '../../routes';
+import { saveMed } from '../../services';
+import { useState } from 'react';
 
 export const Bula = () => {
   const { colors } = useTheme();
   const { params } = useRoute();
-  const { id } = params as { id: string };
+  const { id, name, producer } = params as NavigationList['bula'];
+  const { isChecked, saveMedicine, uri, cacheFileName } = useMed({ id, name, producer })
 
-  const { data } = useBula(id)
 
   return (
     <View>
       <S.ButtonContainer>
         <GoBack />
+        <AddButton onPress={saveMedicine} isChecked={isChecked} />
       </S.ButtonContainer>
       <Pdf
-        source={{ uri: data, cache: true  }}
+        source={{ uri, cache: true, cacheFileName }}
         style={{ width: '100%', height: '100%' }}
         onError={() => {
-          if (!data) return;
-          Linking.openURL(data);
+          if (!uri) return;
+          Linking.openURL(uri);
         }}
         renderActivityIndicator={() => (
           <ActivityIndicator color={colors.primary} />

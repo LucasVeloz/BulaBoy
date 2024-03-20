@@ -1,12 +1,13 @@
 import React from 'react';
-import { TouchableOpacityProps } from 'react-native';
+
+import { AddButonType } from './types';
 
 import * as S from './styles';
 
-export const AddButton = (rest: TouchableOpacityProps) => {
+export const AddButton = ({ isChecked, ...rest }: AddButonType) => {
   return (
     <S.SaveContainer {...rest}>
-      <S.Icon name='add'  />
+      <S.Icon name={isChecked ? 'checkmark' : 'add'}  />
     </S.SaveContainer>
   )
 }

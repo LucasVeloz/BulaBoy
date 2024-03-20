@@ -2,9 +2,9 @@ import { Ionicons } from "@expo/vector-icons";
 import styled from "styled-components/native";
 
 export const SaveContainer = styled.TouchableOpacity`
-  width: 20px;
-  height: 20px;
-  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
   background: ${({ theme }) => theme.colors.primary};
   align-items: center;
   justify-content: center;

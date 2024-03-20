@@ -41,7 +41,11 @@ export const TextSearch = () => {
             maker={item.razaoSocial}
             index={index}
             onPress={() => {
-              navigate('bula', { id: item.idBulaProfissionalProtegido })
+              navigate('bula', {
+                id: item.idBulaPacienteProtegido,
+                name: item.nomeProduto,
+                producer: item.razaoSocial
+              })
             }}
           />
         )}

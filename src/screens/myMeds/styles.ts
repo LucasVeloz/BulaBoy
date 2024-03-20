@@ -14,11 +14,13 @@ export const HeaderContainer = styled.View`
   justify-content: space-between;
 `;
 
-export const block = styled.View``;
+export const block = styled.View`
+  max-width: 85%;
+`;
 
 export const Title = styled.Text`
   ${({ theme }) => css`
-    font-size: ${dynamicFontSize(24)}px;
+    font-size: ${dynamicFontSize(20)}px;
     font-family: ${theme.fonts.bold};
     text-align: right;
   `};
