@@ -26,5 +26,21 @@
   "medicine-exists": {
     "pt-br": "Medicamento já existe",
     "en-us": "Medicine already exists"
+  },
+  "bula": {
+    "pt-br": "Bula",
+    "en-us": "Bula"
+  },
+  "scheduler-header": {
+    "pt-br": "Agendar Notificações de horários",
+    "en-us": "Schedule Time Notifications"
+  },
+  "apologize": {
+    "pt-br": "Desculpe",
+    "en-us": "Sorry"
+  },
+  "generic-error-saving-bula": {
+    "pt-br": "Tivemos um problema ao salvar, tente novamente mais tarde",
+    "en-us": "We had a problem saving, please try again later"
   }
 }
