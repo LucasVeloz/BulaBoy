@@ -15,7 +15,7 @@ export const MedicineItem = ({ name, schedule, id }: Props) => {
         </S.Circle>
         <S.MedicineName sharedTransitionTag={`${id}-${name}`} numberOfLines={1}>{name}</S.MedicineName>
       </S.Block>
-      <S.Schedule>{schedule}</S.Schedule>
+      {/* <S.Schedule>{new Date(schedule?.date).getHours()}:</S.Schedule> */}
       <S.Arrow name='chevron-right' />
     </S.Container>
   )

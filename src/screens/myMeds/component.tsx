@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { Switch } from 'react-native';
 import { useTheme } from 'styled-components/native';
+import * as N from 'expo-notifications';
 
-import { GoBack } from '../../components';
+import { GoBack, Schedule } from '../../components';
 
 import { NavigationList } from '../../routes';
 
-import { useMed } from '../../hooks';
 
 import * as S from './styles';
-import { getMed, navigate } from '../../services';
+import { getMed, navigate, updateMed } from '../../services';
 import { renderTextByHash } from '../../utils';
 
 
@@ -18,15 +18,53 @@ import { renderTextByHash } from '../../utils';
 export const MyMeds = () => {
   const { params: { id } } = useRoute<RouteProp<NavigationList, 'myMeds'>>()
   const theme = useTheme()
-
-  const [isToggled, setIsToggled] = useState(false);
-
   const med = getMed(id);
+
+  const [hourTest, setHourTest] = useState(med?.schedule?.date ? new Date(med?.schedule?.date) : new Date());
+
+  const [isToggled, setIsToggled] = useState(Boolean(med?.schedule?.isToggled));
 
   function openBula() {
     if (!med?.id) return;
     navigate('bula', { id, name: med?.name, producer: med?.producer })
   }
+
+
+  useEffect(() => {
+    (async () => {
+      if (!isToggled || !med) return;
+      const notificationId = await N.scheduleNotificationAsync({
+        content: {
+          title:  med?.name,
+          subtitle: 'Está na hora de tomar seu remédio',
+
+        },
+        trigger: {
+          hour: hourTest.getHours(),
+          minute: hourTest.getMinutes(),
+          repeats: true
+        }
+      });
+
+      updateMed(id, {
+        ...med,
+        schedule: {
+          date: hourTest,
+          id: notificationId,
+          isToggled,
+        }
+      })
+
+    })()
+
+    return () => {
+      if (!med?.schedule?.id) return;
+      N.cancelScheduledNotificationAsync(med?.schedule.id);
+    }
+
+  }, [hourTest, isToggled])
+
+
 
 
   return (
@@ -53,7 +91,7 @@ export const MyMeds = () => {
       </S.SchedulerHeader>
       {
         isToggled && (
-          <S.Subtitle>vai mostrar o picker quando tiver pronto</S.Subtitle>
+          <Schedule onChangeValue={setHourTest} value={hourTest} />
         )
       }
     </S.Container>

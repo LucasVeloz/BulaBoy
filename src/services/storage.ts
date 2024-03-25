@@ -5,7 +5,14 @@ import { renderTextByHash } from "../utils";
 
 export const storage = new MMKV();
 
-export type MedType = NavigationList['bula'] & { uri?: string }
+export type MedType = NavigationList['bula'] &
+  { uri?: string;
+    schedule?: {
+      date: Date;
+      id: string | null;
+      isToggled: boolean;
+    }
+  }
 
 const MEDICINE_KEY = 'myMeds'
 
@@ -16,6 +23,19 @@ export function getMeds() {
 export function getMed(id: string) {
   const meds = getMeds();
   return meds.find(item => item.id === id);
+}
+
+export function updateMed(id: string, info: MedType) {
+  const meds = getMeds();
+
+  const updatedMeds = meds.map(item => {
+    if (item.id === id) {
+      return info
+    }
+    return item
+  });
+  storage.set(MEDICINE_KEY, JSON.stringify(updatedMeds));
+
 }
 
 
