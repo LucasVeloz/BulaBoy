@@ -17,6 +17,7 @@ export const Schedule = ({ value, onChangeValue }: Props) => {
       updatedValue.setHours(value.getHours() - 1);
     }
     if (type === 'subMinute') {
+      if (value.getMinutes() - 1 === 0 && value.getHours() === 0) return;
       updatedValue.setMinutes(value.getMinutes() - 1);
     }
     onChangeValue(updatedValue)

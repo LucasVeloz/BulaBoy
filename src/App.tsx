@@ -22,7 +22,7 @@ export default function App() {
   });
 
   useEffect(() => {
-    (async () => {
+    (() => {
       N.requestPermissionsAsync({
         ios: {
           allowBadge: true,
@@ -33,7 +33,7 @@ export default function App() {
       N.setNotificationHandler({
         handleNotification: async () => ({
           shouldShowAlert: true,
-          shouldPlaySound: false,
+          shouldPlaySound: true,
           shouldSetBadge: true,
         }),
       });

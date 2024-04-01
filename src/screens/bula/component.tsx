@@ -7,12 +7,10 @@ import Pdf from 'react-native-pdf';
 
 import { AddButton, GoBack } from '../../components';
 
-import { useBula, useMed } from '../../hooks';
+import { useMed } from '../../hooks';
 
 import * as S from './styles';
 import { NavigationList } from '../../routes';
-import { saveMed } from '../../services';
-import { useState } from 'react';
 
 export const Bula = () => {
   const { colors } = useTheme();

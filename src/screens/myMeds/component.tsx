@@ -20,7 +20,7 @@ export const MyMeds = () => {
   const theme = useTheme()
   const med = getMed(id);
 
-  const [hourTest, setHourTest] = useState(med?.schedule?.date ? new Date(med?.schedule?.date) : new Date());
+  const [time, setTime] = useState(med?.schedule?.date ? new Date(med?.schedule?.date) : new Date());
 
   const [isToggled, setIsToggled] = useState(Boolean(med?.schedule?.isToggled));
 
@@ -30,26 +30,28 @@ export const MyMeds = () => {
   }
 
 
+
   useEffect(() => {
     (async () => {
       if (!isToggled || !med) return;
+      const seconds = (time.getMinutes() * 60) + (time.getHours() * 60 * 60);
+
       const notificationId = await N.scheduleNotificationAsync({
         content: {
           title:  med?.name,
           subtitle: 'Está na hora de tomar seu remédio',
-
         },
+
         trigger: {
-          hour: hourTest.getHours(),
-          minute: hourTest.getMinutes(),
-          repeats: true
+          seconds,
+          repeats: true,
         }
       });
 
       updateMed(id, {
         ...med,
         schedule: {
-          date: hourTest,
+          date: time,
           id: notificationId,
           isToggled,
         }
@@ -62,7 +64,7 @@ export const MyMeds = () => {
       N.cancelScheduledNotificationAsync(med?.schedule.id);
     }
 
-  }, [hourTest, isToggled])
+  }, [time, isToggled, med])
 
 
 
@@ -91,7 +93,7 @@ export const MyMeds = () => {
       </S.SchedulerHeader>
       {
         isToggled && (
-          <Schedule onChangeValue={setHourTest} value={hourTest} />
+          <Schedule onChangeValue={setTime} value={time} />
         )
       }
     </S.Container>

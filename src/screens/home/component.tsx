@@ -1,6 +1,5 @@
 import React from 'react';
 import { FlashList } from '@shopify/flash-list';
-import { useTheme } from 'styled-components/native';
 
 import { renderTextByHash } from '../../utils';
 
@@ -15,7 +14,6 @@ import { useMyMeds } from '../../hooks';
 import * as S from './styles';
 
 export function Home() {
-  const theme = useTheme();
 
   const { data } = useMyMeds();
 
