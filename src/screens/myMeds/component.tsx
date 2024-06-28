@@ -80,7 +80,7 @@ export const MyMeds = () => {
       </S.HeaderContainer>
       <S.BulaButton onPress={openBula}>
         <S.BulaButtonText>{renderTextByHash('bula')}</S.BulaButtonText>
-        <S.Icon name="ios-document" />
+        <S.Icon name="document" />
         <S.IconGo name="chevron-forward" />
       </S.BulaButton>
       <S.SchedulerHeader>

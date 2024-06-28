@@ -36,7 +36,20 @@
     },
     "runtimeVersion": "1.0.0",
     "plugins": [
-      "expo-localization"
+      "expo-localization",
+      "expo-font",
+      "expo-build-properties",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "newArchEnabled": false
+          },
+          "android": {
+            "newArchEnabled": false
+          }
+        }
+      ]
     ]
   }
 }

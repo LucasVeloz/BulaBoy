@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FlashList } from '@shopify/flash-list';
+import { Alert } from 'react-native';
 
 import { renderTextByHash } from '../../utils';
 
-import { Block, Input, MedicineItem } from '../../components';
+import { Block, Input, MedicineItem, Verify } from '../../components';
 
-import { navigate } from '../../services';
+import { BulaBoyApi, navigate } from '../../services';
 
 import { SEARCH_TYPES } from './constants';
 
@@ -14,8 +15,18 @@ import { useMyMeds } from '../../hooks';
 import * as S from './styles';
 
 export function Home() {
+  const [isLoading, setIsLoading] = useState(false);
 
   const { data } = useMyMeds();
+
+
+  async function verifyMeds() {
+    setIsLoading(true);
+    const meds = data.map((item) => item.name);
+    const response = await BulaBoyApi.getInfo(meds);
+    Alert.alert('BulaBoy!', response)
+    setIsLoading(false);
+  }
 
   return (
     <S.Container>
@@ -47,6 +58,9 @@ export function Home() {
         )}
         estimatedItemSize={50}
       />
+      {data.length > 0 &&
+        <Verify isLoading={isLoading} onPress={verifyMeds} />
+      }
     </S.Container>
   )
 }

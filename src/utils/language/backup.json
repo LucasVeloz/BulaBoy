@@ -32,8 +32,8 @@
     "en-us": "Bula"
   },
   "scheduler-header": {
-    "pt-br": "Agendar Notificações de horários",
-    "en-us": "Schedule Time Notifications"
+    "pt-br": "Agendar Notificações de intervalo",
+    "en-us": "Schedule Interval Notifications"
   },
   "apologize": {
     "pt-br": "Desculpe",
@@ -42,5 +42,13 @@
   "generic-error-saving-bula": {
     "pt-br": "Tivemos um problema ao salvar, tente novamente mais tarde",
     "en-us": "We had a problem saving, please try again later"
+  },
+  "bula-error": {
+    "pt-br": "Tivemos um erro, clique aqui para abrir na web",
+    "en-us": ""
+  },
+  "verify": {
+    "pt-br": "Verificar",
+    "en-us": "Verify"
   }
 }
