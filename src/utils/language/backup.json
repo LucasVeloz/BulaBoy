@@ -45,10 +45,14 @@
   },
   "bula-error": {
     "pt-br": "Tivemos um erro, clique aqui para abrir na web",
-    "en-us": ""
+    "en-us": "We had an error, click here to open in the web"
   },
   "verify": {
     "pt-br": "Verificar",
     "en-us": "Verify"
+  },
+  "close": {
+    "pt-br": "Fechar",
+    "en-us": "Close"
   }
 }

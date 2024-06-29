@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { FlashList } from '@shopify/flash-list';
-import { Alert } from 'react-native';
+import { Button, Modal } from 'react-native';
 
 import { renderTextByHash } from '../../utils';
 
 import { Block, Input, MedicineItem, Verify } from '../../components';
 
-import { BulaBoyApi, navigate } from '../../services';
+import { navigate } from '../../services';
 
 import { SEARCH_TYPES } from './constants';
 
@@ -15,17 +15,15 @@ import { useMyMeds } from '../../hooks';
 import * as S from './styles';
 
 export function Home() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const { data } = useMyMeds();
+  const { data, isLoading, verifyData, dispatchVerify } = useMyMeds();
 
 
   async function verifyMeds() {
-    setIsLoading(true);
-    const meds = data.map((item) => item.name);
-    const response = await BulaBoyApi.getInfo(meds);
-    Alert.alert('BulaBoy!', response)
-    setIsLoading(false);
+    dispatchVerify(undefined,{ onSuccess: () => {
+      setIsModalVisible(true);
+    }})
   }
 
   return (
@@ -61,6 +59,21 @@ export function Home() {
       {data.length > 0 &&
         <Verify isLoading={isLoading} onPress={verifyMeds} />
       }
+      <Modal
+        visible={isModalVisible}
+        animationType='slide'
+      >
+        <S.ScrollContainer contentContainerStyle={{
+          paddingBottom: 120
+        }}>
+        <S.Title>{renderTextByHash('greeting-title')}</S.Title>
+        <S.SectionText>{verifyData}</S.SectionText>
+        <Button
+          title={renderTextByHash('close')}
+          onPress={() => setIsModalVisible(false)}
+          />
+        </S.ScrollContainer>
+      </Modal>
     </S.Container>
   )
 }

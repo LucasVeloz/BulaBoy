@@ -1,8 +1,13 @@
-import styled from 'styled-components/native';
-import { dynamicFontSize } from '../../utils';
+import styled from "styled-components/native";
+import { dynamicFontSize } from "../../utils";
 
 export const Container = styled.View`
   flex: 1;
+  background: ${({ theme }) => theme.colors.white};
+  padding: 64px 20px 0;
+`;
+
+export const ScrollContainer = styled.ScrollView`
   background: ${({ theme }) => theme.colors.white};
   padding: 64px 20px 0;
 `;
@@ -26,8 +31,6 @@ export const HeroSection = styled.View`
   justify-content: space-around;
   align-items: center;
 `;
-
-
 
 export const Separator = styled.View`
   width: 100%;

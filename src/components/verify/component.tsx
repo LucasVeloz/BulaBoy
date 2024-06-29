@@ -9,7 +9,7 @@ import * as S from './styles';
 export const Verify = ({ isLoading, onPress }: { isLoading: boolean, onPress: () => void }) => {
   return (
     <Animated.View entering={SlideInRight} exiting={SlideOutRight}>
-      <S.Container onPress={onPress}>
+      <S.Container onPress={onPress} disabled={isLoading}>
         {isLoading ? (
           <ActivityIndicator color="white" size="small" />
         ) : (
