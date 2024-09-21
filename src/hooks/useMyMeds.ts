@@ -10,7 +10,7 @@ export const useMyMeds = () => {
   const medsNames = meds.map((item) => item.name);
   const {
     data: verifyData,
-    isLoading,
+    isPending: isLoading,
     mutate: dispatchVerify,
   } = useMutation({
     mutationKey: medsNames,

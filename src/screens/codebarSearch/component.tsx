@@ -24,13 +24,11 @@ export const CodebarSearch = () => {
       <CameraView
         style={{ flex: 1, paddingTop: 40, paddingHorizontal: 20 }}
         barcodeScannerSettings={{
-          barcodeTypes: ['codabar', 'code128', 'qr']
+          barcodeTypes: ['codabar', 'code128', 'qr', 'ean13']
         }}
         onBarcodeScanned={shouldScan ? async (result) => {
           setShouldScan(false);
-          console.log(result.data)
           const response = await MedicineApi.barCode(result.data)
-          console.log('-------->', response)
         }: undefined}
       >
       <GoBack />
